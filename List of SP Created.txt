@@ -1,0 +1,41 @@
+EULabelPrinterMaintenanceSP 
+	(creates counter & checks itself)
+
+
+EUCreateAssetSchedLogEntry_ByUse_Sp 
+	(creates a log for every ASID)
+
+
+Trigger:
+ResetPrintCounter 
+
+Job:
+EU_LabelPrinterMaintenanceSP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----FOR UNIVERSAL----
+-a unqiue SP needs to be created to activate a counter on Asset Sched 
+
+-Function that does >= logic (parameters need ASID & maxCounter int)
+	-will read counter on Asset Sched
+	-send Entry Log and then email if over maxCounter
+
+-all functions will need to be stored on one masterSP to execute checking at night 
+
+
+-Trigger that reads first UPDATED Sched Log and checks the ASID on 
+Asset Sched and tries to find a not null [ByUseCounter]
+	-resets it 
